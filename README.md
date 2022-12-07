@@ -8,6 +8,12 @@
 - https://blog.csdn.net/qq_42982923/article/details/119242216
 
 
+## 啟動圖片
+- 圖片來源：https://www.bootschool.net/ascii-art
+- 切換環境：https://www.baeldung.com/spring-boot-disable-banner
+
+
 ## spring boot 排程
 - Spring Boot Scheduling Tasks
 - https://polinwei.com/spring-boot-scheduling-tasks/
+
