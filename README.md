@@ -15,5 +15,13 @@
 
 ## spring boot 排程
 - Spring Boot Scheduling Tasks
+- 需要加 @EnableScheduling
 - https://polinwei.com/spring-boot-scheduling-tasks/
 
+
+## filter 
+- 使用 @Configuration、＠Component
+  - 預設為全部 api 皆會通過此 filter
+- 使用 @WebFilter
+  - 指定特定 req 才會通過此 filter
+  - 需要再新增 @ServletComponentScan 在 application.java 檔

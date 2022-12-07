@@ -12,12 +12,20 @@ package com.example.springboot.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
+@RequestMapping(value = "simple")
 @Controller
 public class SimpleController {
 
 	@GetMapping(value = "/get")
 	public ResponseEntity<String> doGetRes(){
+		
+		log.info("執行 controller");
+		
 		return ResponseEntity.ok("帥氣的法蘭克");
 	}
 }
