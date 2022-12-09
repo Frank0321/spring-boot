@@ -5,3 +5,8 @@ server:
 spring:
   banner:
     location: classpath:/banner-dev.txt
+
+# 控制排成的開關
+  scedule:
+    enable: Y
+  
