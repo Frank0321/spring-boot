@@ -1,5 +1,13 @@
-#management.endpoints.web.exposure.include=*
 server:
   port: 8081
 
+# H2 DB
+spring:
+  h2:
+    console:
+      enabled: true
+      path: '/h2-console-log'
+
+  datasource:
+    url: 'jdbc:h2:mem:local'
 
