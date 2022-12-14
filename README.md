@@ -31,4 +31,10 @@
 - 實作 HandlerInterceptor，決定攔截器功能，並註冊為 component
 - 實作 WebMvcConfigurer，註冊攔截器與攔截路徑，並註冊為 component
 - https://ithelp.ithome.com.tw/articles/10278220
+
+
+## ApplicationContextAware (取得 spring bean)
+- 實作 ApplicationContextAware
+- 待撰寫範例
+- https://iter01.com/535392.html
   
