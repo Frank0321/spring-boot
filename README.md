@@ -48,3 +48,9 @@
  - 輸入 ./actuator/beans
  - https://kucw.github.io/blog/2020/7/spring-actuator/
  
+ 
+## AnnotationBeanNameGenerator (註冊 spring bean 名稱)
+- 進行改寫 spring bean 名稱
+- 繼承 AnnotationBeanNameGenerator 並改寫 buildDefaultBeanName
+- 在啟動程式 (xxxApplication.class)，@ComponentScan 需添加 nameGenerator 的參數
+- 
