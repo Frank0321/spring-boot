@@ -37,4 +37,14 @@
 - 實作 ApplicationContextAware
 - 待撰寫範例
 - https://iter01.com/535392.html
-  
+
+
+## Spring Actuator
+- 可以用來查看當前的 SpringBoot 程式運行的內部狀況，譬如知道自動化配置的資訊、創建的 Spring beans 和獲取當前的 properties 屬性值
+  - 開啟所有endpoints(不包含shutdown)
+    - management.endpoints.web.exposure.include=*
+  - 開啟/actuator/beans和/actuator/mappings
+    - management.endpoints.web.exposure.include=beans,mappings
+ - 輸入 ./actuator/beans
+ - https://kucw.github.io/blog/2020/7/spring-actuator/
+ 

@@ -15,8 +15,6 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<javax.mail.version>1.6.2</javax.mail.version>
-		<spring.thymeleaf.version>3.0.15.RELEASE</spring.thymeleaf.version>
 		<org.projectlombok.version>1.18.22</org.projectlombok.version>
 	</properties>
 
@@ -33,14 +31,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		
+
 		<!-- = H2 database -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- = org.projectlombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -48,13 +46,20 @@
 			<version>${org.projectlombok.version}</version>
 			<optional>true</optional>
 		</dependency>
-		
+
 		<!-- = spring test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- = spring actuator -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
 
 	</dependencies>
 
