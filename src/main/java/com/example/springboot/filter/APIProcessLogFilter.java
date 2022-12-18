@@ -5,6 +5,7 @@
  * @ModifyHistory : 
  *  v1.00, 2022/12/18, frankchang
  *   1) First Release.
+ *   2) 2022/12/19 若 reqBody 為空值，則回傳 null
  */
 
 package com.example.springboot.filter;
@@ -52,7 +53,11 @@ public class APIProcessLogFilter extends OncePerRequestFilter {
 		String requestBody = IOUtils.toString(requestWrapper.getInputStream(), StandardCharsets.UTF_8);
 		String reqBody = requestBody.replaceAll("[\n\t]", "");
        
-		log.info("httpMethod : {}, uri : {}, reqBody {}", httpMethod, uri, reqBody);
+		if (reqBody.isBlank()) {
+			reqBody = null;
+		}
+		
+		log.info("httpMethod : {}, uri : {}, reqBody : {}", httpMethod, uri, reqBody);
 		
 		filterChain.doFilter(servletRequest, response);
 		
