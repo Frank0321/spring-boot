@@ -25,7 +25,19 @@
 - 使用 @WebFilter
   - 指定特定 req 才會通過此 filter
   - 需要再新增 @ServletComponentScan 在 application.java 檔
-  
+
+
+## 使用 filter 紀錄 request 參數
+- 繼承 OncePerRequestFilter，並改寫 doFilterInternal
+  - 從 HttpServletRequest 取得 httpMethod、uri、params 等參數
+- `取得 request 參數`
+  - 由於 inputstream 只可以读取一次，需進行調整
+  - 繼承 HttpServletRequestWrapper，改寫 getInputStream，使用新的 ServletInputStream 裝資料 (準備進行改寫)
+  - 添加 commons-io dependency，使用 IOUtils.toByteArray 的方法
+- https://chikuwa-tech-study.blogspot.com/2021/05/spring-boot-filter-request-and-response.html
+- https://easyboot.xyz/posts/52559/
+- https://juejin.cn/post/7024038764804735012
+
   
 ## HandlerInterceptor (攔截器)
 - 實作 HandlerInterceptor，決定攔截器功能，並註冊為 component
@@ -53,4 +65,3 @@
 - 進行改寫 spring bean 名稱
 - 繼承 AnnotationBeanNameGenerator 並改寫 buildDefaultBeanName
 - 在啟動程式 (xxxApplication.class)，@ComponentScan 需添加 nameGenerator 的參數
-- 
