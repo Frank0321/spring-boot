@@ -6,6 +6,7 @@
  *  v1.00, 2022/12/05, frankchang
  *   1) First Release.
  *   2) 2022/12/11 新增單筆與多筆資料更新
+ *   3) 2022/12/19 新增查詢全部功能
  */
 
 package com.example.springboot.service;
@@ -18,6 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.springboot.api.request.EmployRequest;
+import com.example.springboot.api.response.EmployResponse;
+import com.example.springboot.api.response.EmployResponse.DataModel;
 import com.example.springboot.entity.EmployEntity;
 import com.example.springboot.repository.EmployRepository;
 
@@ -66,6 +69,32 @@ public class EmployService {
 		repository.save(entity);
 		
 		return "success";
+	}
+
+	/**
+	 * 查詢全部資料
+	 * 
+	 * @return
+	 */
+	public EmployResponse findAll() {
+		
+		List<EmployEntity> entities = repository.findAll();
+		
+		List<DataModel> list = new ArrayList<DataModel>();
+		for (EmployEntity entity : entities) {
+			DataModel dataModel = new DataModel();
+			dataModel.setEmpNo(entity.getEmpNo());
+			dataModel.setName(entity.getName());
+//			dataModel.setCreateDate(entity.getCreateDate());
+			dataModel.setPhone(entity.getPhone());
+			dataModel.setMail(entity.getMail());
+			list.add(dataModel);
+		}
+		
+		EmployResponse response = new EmployResponse();
+		response.setDataModels(list);
+		
+		return response;
 	}
 	
 
