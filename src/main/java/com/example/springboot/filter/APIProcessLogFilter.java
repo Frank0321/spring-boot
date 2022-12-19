@@ -6,6 +6,7 @@
  *  v1.00, 2022/12/18, frankchang
  *   1) First Release.
  *   2) 2022/12/19 若 reqBody 為空值，則回傳 null
+ *   2) 2022/12/19 修改 String.isBank() 為 String.isEmpty()
  */
 
 package com.example.springboot.filter;
@@ -53,7 +54,7 @@ public class APIProcessLogFilter extends OncePerRequestFilter {
 		String requestBody = IOUtils.toString(requestWrapper.getInputStream(), StandardCharsets.UTF_8);
 		String reqBody = requestBody.replaceAll("[\n\t]", "");
        
-		if (reqBody.isBlank()) {
+		if (reqBody.isEmpty()) {
 			reqBody = null;
 		}
 		
