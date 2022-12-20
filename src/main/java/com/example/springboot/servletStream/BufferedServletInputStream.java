@@ -5,9 +5,10 @@
  * @ModifyHistory : 
  *  v1.00, 2022/12/18, frankchang
  *   1) First Release.
+ *   2) 2022/12/20 移動檔案位置
  */
 
-package com.example.springboot.inputStream;
+package com.example.springboot.servletStream;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

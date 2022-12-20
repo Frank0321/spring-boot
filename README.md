@@ -38,6 +38,16 @@
 - https://easyboot.xyz/posts/52559/
 - https://juejin.cn/post/7024038764804735012
 
+
+## 使用 filter 紀錄 response 參數
+- 需要執行下列程式，否則會陷入 doFilter 的 loop 
+  ```
+	ServletOutputStream outputStream = response.getOutputStream();
+	outputStream.write(resbody.getBytes());
+	outputStream.flush();
+	outputStream.close();
+  ```
+- https://blog.51cto.com/u_15585381/5277668
   
 ## HandlerInterceptor (攔截器)
 - 實作 HandlerInterceptor，決定攔截器功能，並註冊為 component
