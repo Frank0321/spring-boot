@@ -34,7 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Order(0)
 @Slf4j
-@WebFilter(filterName = "APIProcessFilter", urlPatterns = "/*")
+@WebFilter(filterName = "APIProcessFilter", urlPatterns = "/employ/*")
 public class APIProcessLogFilter extends OncePerRequestFilter {
 
 	@Override
