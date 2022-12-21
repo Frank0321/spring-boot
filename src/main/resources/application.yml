@@ -17,3 +17,15 @@ management:
     web:
       exposure:
         include: '*'
+
+
+application:
+  param:
+    value: 'application_param'
+    config: {\'id\': 1, \'name\': frank, \'param\': param}
+    users:
+    -
+      name: cindy
+      password: 1q2w3e4r
+    -
+      {\'name\': david, \'password\': 1qaz2wsx}

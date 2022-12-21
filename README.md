@@ -75,3 +75,8 @@
 - 進行改寫 spring bean 名稱
 - 繼承 AnnotationBeanNameGenerator 並改寫 buildDefaultBeanName
 - 在啟動程式 (xxxApplication.class)，@ComponentScan 需添加 nameGenerator 的參數
+
+
+## 讀取 application.yml 檔內容
+- https://www.baeldung.com/spring-boot-yaml-list
+- https://www.baeldung.com/spring-value-annotation
