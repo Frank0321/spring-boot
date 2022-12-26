@@ -80,3 +80,12 @@
 ## 讀取 application.yml 檔內容
 - https://www.baeldung.com/spring-boot-yaml-list
 - https://www.baeldung.com/spring-value-annotation
+
+
+## 啟動時，自動執行 sql 
+- https://ithelp.ithome.com.tw/articles/10297778
+
+
+## jwt 範例
+- 參考 sample code
+- https://ithelp.ithome.com.tw/articles/10250968
