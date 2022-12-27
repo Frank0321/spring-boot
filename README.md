@@ -89,3 +89,10 @@
 ## jwt 範例
 - 參考 sample code
 - https://ithelp.ithome.com.tw/articles/10250968
+
+
+## session 應用
+- 將資訊儲放 session 中
+- 從 HttpServletRequest 取出 session 
+- 內部可以擺放物件
+- 登入時，存入 session ，登出時，清除 session 
