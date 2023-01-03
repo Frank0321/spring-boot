@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springboot.api.request.SessionRequest;
 import com.example.springboot.api.response.SessionResponse;
-import com.example.springboot.helper.httpHelper;
+import com.example.springboot.helper.HttpHelper;
 import com.example.springboot.user.LoginUser;
 
 @RestController
@@ -28,7 +28,7 @@ import com.example.springboot.user.LoginUser;
 public class SessionController {
 	
 	@Autowired
-	private httpHelper helper;
+	private HttpHelper helper;
 
 	/***
 	 * 登入時，將資訊存入 session
