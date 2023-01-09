@@ -29,3 +29,7 @@ application:
       password: 1q2w3e4r
     -
       {\'name\': david, \'password\': 1qaz2wsx}
+
+user:
+  file:
+    path: D:/pic/
