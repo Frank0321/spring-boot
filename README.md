@@ -96,3 +96,8 @@
 - 從 HttpServletRequest 取出 session 
 - 內部可以擺放物件
 - 登入時，存入 session ，登出時，清除 session 
+
+
+## 上傳圖片與開啟圖片
+- https://waynestalk.com/spring-boot-restful-download-image/
+- https://shinyu0430.github.io/2022/05/06/springUploadImage/

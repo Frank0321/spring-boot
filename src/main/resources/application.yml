@@ -32,4 +32,4 @@ application:
 
 user:
   file:
-    path: D:/pic/
+    path: ./src/main/resources/file/update/

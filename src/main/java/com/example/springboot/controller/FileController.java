@@ -9,16 +9,19 @@
 
 package com.example.springboot.controller;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.example.springboot.service.FileService;
 
@@ -29,22 +32,21 @@ public class FileController {
 	private FileService service;
 	
 	@PostMapping(value = "upload")
-	public ModelAndView updateFile (@RequestParam("pic") MultipartFile multipartFile) {
+	@ResponseBody
+	public String updateFile (@RequestParam("pic") MultipartFile multipartFile) {
 		
-		ModelAndView modelAndView = service.updateFile(multipartFile);
+		String returnMsg = service.updateFile(multipartFile);
 		
-		return modelAndView;
+		return returnMsg;
 	}
 	
-//	@RequestMapping(value = "/{filename:.+}")
-//	@ResponseBody
-//	public ResponseEntity<?> getFile(@PathVariable String filename) {
-//		try {
-//			return ResponseEntity.ok(resourceLoader.getResource("file:" + Paths.get(filePath + filename)));
-//		} catch (Exception e) {
-//			return ResponseEntity.notFound().build();
-//		}
-//	}
-	
+	@GetMapping(value = "show")
+	@ResponseBody
+    public void download(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)
+            throws ServletException, IOException {
+		
+		service.updateFile(httpServletRequest, httpServletResponse);
+		
+	}
 	
 }
