@@ -101,3 +101,4 @@
 ## 上傳圖片與開啟圖片
 - https://waynestalk.com/spring-boot-restful-download-image/
 - https://shinyu0430.github.io/2022/05/06/springUploadImage/
+- https://www.baeldung.com/java-base64-image-string
