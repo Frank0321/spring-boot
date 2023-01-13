@@ -45,7 +45,7 @@ public class FileController {
     public void download(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)
             throws ServletException, IOException {
 		
-		service.updateFile(httpServletRequest, httpServletResponse);
+		service.showFile(httpServletRequest, httpServletResponse);
 		
 	}
 	

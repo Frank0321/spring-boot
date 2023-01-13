@@ -69,7 +69,7 @@ public class FileService {
 	 * @throws IOException 
 	 * @throws ServletException 
 	 */
-	public void updateFile(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+	public void showFile(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
 		
         File file = new File(filePath + "update.png");
         httpServletRequest.setAttribute(ImageResourceHttpRequestHandler.ATTRIBUTE_FILE, file);

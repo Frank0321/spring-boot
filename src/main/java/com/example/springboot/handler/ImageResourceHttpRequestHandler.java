@@ -1,5 +1,5 @@
 /**
- * @Description : TODO
+ * @Description : 上傳圖片 handler
  * @ClassName : ImageResourceHttpRequestHandler.java
  * @Copyright : Copyright (c) 2023 
  * @ModifyHistory : 
