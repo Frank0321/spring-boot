@@ -36,7 +36,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
+		<!--	<scope>runtime</scope>  -->
 		</dependency>
 
 		<!-- = org.projectlombok -->
@@ -87,9 +87,7 @@
 			<version>0.9.1</version>
 		</dependency>
 
-
-
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<!-- junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

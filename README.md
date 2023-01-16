@@ -102,3 +102,36 @@
 - https://waynestalk.com/spring-boot-restful-download-image/
 - https://shinyu0430.github.io/2022/05/06/springUploadImage/
 - https://www.baeldung.com/java-base64-image-string
+
+
+## 建立 h2 db 可用 dbeaver 連線
+- h2 dependency 不需要使用 runtime
+- 新增一個 bean
+  ```
+   /**
+     * Start internal H2 server so we can query the DB from IDE
+     *
+     * @return H2 Server instance
+     * @throws SQLException
+     */
+    @Bean(initMethod = "start", destroyMethod = "stop")
+    public Server h2Server() throws SQLException {
+        return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9090");
+    }
+  ```
+- application.yml 設定
+  ```
+  spring:
+  h2:
+    console:
+      enabled: true
+      path: '/h2-console-log'
+
+  datasource:
+    url: 'jdbc:h2:mem:local'
+  ```  
+- dbeaver 使用 h2 server 連線
+  - Host
+  - jdbc:h2:tcp://localhost:9090/mem:local  
+  
+- https://stackoverflow.com/questions/43256295/how-to-access-in-memory-h2-database-of-one-spring-boot-application-from-another/43276769#43276769
