@@ -135,3 +135,12 @@
   - jdbc:h2:tcp://localhost:9090/mem:local  
   
 - https://stackoverflow.com/questions/43256295/how-to-access-in-memory-h2-database-of-one-spring-boot-application-from-another/43276769#43276769
+
+
+## swagger 設定
+- controller 
+  - class 標註 @Tag
+  - method 標註 @Operation 
+  
+  
+  

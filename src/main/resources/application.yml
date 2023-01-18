@@ -33,3 +33,9 @@ application:
 user:
   file:
     path: ./src/main/resources/file/update/
+    
+    
+# swagger uri
+springdoc:
+  swagger-ui:
+    path: /swagger    

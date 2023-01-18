@@ -14,13 +14,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.log4j.Log4j2;
 
+@Tag(name = "簡單範例")
 @Log4j2
 @RequestMapping(value = "simple")
 @Controller
 public class SimpleController {
 
+	@Operation(summary = "間單的 api")
 	@GetMapping(value = "/get")
 	public ResponseEntity<String> doGetRes(){
 		
