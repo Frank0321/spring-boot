@@ -49,6 +49,7 @@
   ```
 - https://blog.51cto.com/u_15585381/5277668
   
+  
 ## HandlerInterceptor (攔截器)
 - 實作 HandlerInterceptor，決定攔截器功能，並註冊為 component
 - 實作 WebMvcConfigurer，註冊攔截器與攔截路徑，並註冊為 component
@@ -106,7 +107,7 @@
 
 ## 建立 h2 db 可用 dbeaver 連線
 - h2 dependency 不需要使用 runtime
-- 新增一個 bean
+- 新增一個 bean port 不可以和 spring 啟動的 port 一樣
   ```
    /**
      * Start internal H2 server so we can query the DB from IDE
@@ -131,6 +132,7 @@
     url: 'jdbc:h2:mem:local'
   ```  
 - dbeaver 使用 h2 server 連線
+  - 組合資訊：bean 的 port + url h2 後面那一段
   - Host
   - jdbc:h2:tcp://localhost:9090/mem:local  
   
@@ -141,6 +143,13 @@
 - controller 
   - class 標註 @Tag
   - method 標註 @Operation 
+  
+  
+## db table 設定
+- spring.jpa.hibernate.ddl-auto
+  - create: 啟動時建立Table, 下次啟動會覆蓋上次的, 故會造成資料遺失  
+  - update: 若無Table則啟動時建立, 若有則視有無變更自動Update
+  - create-drop: 啟動時建立Table, 當次Session關閉則刪除
   
   
   
