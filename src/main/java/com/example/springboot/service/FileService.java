@@ -23,8 +23,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.springboot.api.request.FileReqBody;
 import com.example.springboot.handler.ImageResourceHttpRequestHandler;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @Service
 public class FileService {
 
@@ -38,13 +42,13 @@ public class FileService {
 	 * @param multipartFile
 	 * @return
 	 */
-	public String updateFile(MultipartFile multipartFile) {
+	public String updateFile(MultipartFile multipartFile, String fileName) {
 		
 		String returnMsg = "";
 		
 		try {
 			// 新增時間戳在檔名上，表示唯一檔案
-			File file = new File(filePath + "update.png");
+			File file = new File(filePath + fileName + ".png");
 			
 			if (!file.getParentFile().exists()) {
 				file.getParentFile().mkdirs();
@@ -56,7 +60,7 @@ public class FileService {
 			multipartFile.transferTo(absoluteFile);
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			log.info("上傳失敗");
 		}
 		
 		returnMsg = "上傳成功";
@@ -110,6 +114,38 @@ public class FileService {
 		
         httpServletRequest.setAttribute(ImageResourceHttpRequestHandler.ATTRIBUTE_FILE, outFile);
         imageResourceHttpRequestHandler.handleRequest(httpServletRequest, httpServletResponse);
+	}
+
+	/**
+	 * @param reqBody
+	 * @return
+	 */
+	public String updateFile(FileReqBody reqBody) {
+		
+		String returnMsg = "";
+		String fileName = reqBody.getFileName();
+		MultipartFile multipartFile = reqBody.getMultipartFile();
+		
+		try {
+			// 新增時間戳在檔名上，表示唯一檔案
+			File file = new File(filePath + fileName + ".png");
+			
+			if (!file.getParentFile().exists()) {
+				file.getParentFile().mkdirs();
+			}
+			String absolutePath = file.getAbsolutePath();
+			
+			File absoluteFile = new File(absolutePath);
+			
+			multipartFile.transferTo(absoluteFile);
+			
+		} catch (Exception e) {
+			log.info("上傳失敗");
+		}
+		
+		returnMsg = "上傳成功";
+		
+		return returnMsg;
 	}
 
 }

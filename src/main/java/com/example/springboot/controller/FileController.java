@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.springboot.api.request.FileReqBody;
 import com.example.springboot.service.FileService;
 
 @Controller
@@ -34,9 +36,22 @@ public class FileController {
 	
 	@PostMapping(value = "upload")
 	@ResponseBody
-	public String updateFile (@RequestParam("pic") MultipartFile multipartFile) {
+	public String updateFile (@RequestParam("pic") MultipartFile multipartFile, @RequestParam("fileName") String fileName) {
 		
-		String returnMsg = service.updateFile(multipartFile);
+		String returnMsg = service.updateFile(multipartFile, fileName);
+		
+		return returnMsg;
+	}
+	
+	/***
+	 * 待修改
+	 * @param reqBody
+	 * @return
+	 */
+	@PostMapping(value = "otherUpload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public String otherUpload(@RequestBody FileReqBody reqBody) {
+		
+		String returnMsg = service.updateFile(reqBody);
 		
 		return returnMsg;
 	}
