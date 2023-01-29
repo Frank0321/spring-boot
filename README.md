@@ -151,5 +151,12 @@
   - update: 若無Table則啟動時建立, 若有則視有無變更自動Update
   - create-drop: 啟動時建立Table, 當次Session關閉則刪除
   
-  
+
+## HikariCP 設定
+- `minimumIdle` 是 HikariCP 在连接池中维护的最小空闲连接数
+- `maximumPoolSize` 配置最大池大小
+- `idleTimeout` 是允许连接在连接池中空闲的最长时间
+- `maxLifetime` 是池中连接关闭后的最长生命周期（以毫秒为单位)
+- `connectionTimeout` 是客户端等待连接池连接的最大毫秒数
+- https://www.cnblogs.com/chaojizhengui/p/Hikari_.html
   
