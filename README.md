@@ -143,6 +143,8 @@
 - controller 
   - class 標註 @Tag
   - method 標註 @Operation 
+- 攔截器會影響到 swagger 需要額外設定 application.yml
+- https://stackoverflow.com/questions/67162911/petstore-url-swagger-default-app-not-disabled-in-springdoc  
   
   
 ## db table 設定
