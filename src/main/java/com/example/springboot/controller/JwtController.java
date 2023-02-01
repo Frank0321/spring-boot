@@ -77,7 +77,7 @@ public class JwtController {
 	 * @return
 	 */
 	@GetMapping(value = "getHeader")
-	public ResponseEntity<JwtResponse> validate(@RequestHeader ("Authorization") String authorization){
+	public ResponseEntity<JwtResponse> validate(@RequestHeader("Authorization") String authorization){
 		
 		JwtResponse response = new JwtResponse();
 		

@@ -90,6 +90,28 @@
 ## jwt 範例
 - 參考 sample code
 - https://ithelp.ithome.com.tw/articles/10250968
+- 參數放在 header 進行傳送
+- 在 controller 使用 @RequestHeader("Authorization") 可以取出
+- 可以使用 postman Authorization ，並選擇 Bearer Token，傳輸時，會在前面加上 Bearer jwt....
+  - 需要再把 Bearer 拿掉，可用字串方式拆解 authorization.substring(6)
+- 在 HandlerInterceptor 中的 HttpServletRequest 型別時，可以直接使用 .getHeader("Authorization") 取出
+  ```
+  public class LoginCheckInterceptor implements HandlerInterceptor {
+	
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception{
+	
+		HandlerMethod hm = (HandlerMethod) handler;
+		
+		String header = request.getHeader("Authorization");
+		
+		String token = header.substring(6);
+		
+		// .....
+	}
+  }	
+  ```
 
 
 ## session 應用
