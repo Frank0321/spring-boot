@@ -112,7 +112,13 @@
 	}
   }	
   ```
-
+- https://www.svlada.com/jwt-token-authentication-with-spring-boot/
+- https://github.com/bezkoder/spring-boot-refresh-token-jwt
+- https://chikuwa-tech-study.blogspot.com/2021/06/spring-boot-username-password-authentication-and-jwt.html  
+- 解開 jwt 方法
+  - 前端回傳時，通常會帶有前綴字：`bearer `
+  - 在解開時，需要從第七個字開始取 jwt.subString(7)
+  - https://blog.csdn.net/qq_42411805/article/details/124676309
 
 ## session 應用
 - 將資訊儲放 session 中

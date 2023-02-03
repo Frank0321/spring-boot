@@ -7,7 +7,7 @@
  *   1) First Release.
  */
 
-package com.example.springboot.utils;
+package com.example.springboot.helper;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -29,7 +29,7 @@ import lombok.extern.log4j.Log4j2;
 
 @Component
 @Log4j2
-public class JwtToken implements Serializable {
+public class JwtTokenHelper implements Serializable {
 
 	private static final long serialVersionUID = -3653711997173624177L;
 	

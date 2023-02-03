@@ -26,14 +26,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springboot.api.request.JwtRequest;
 import com.example.springboot.api.response.JwtResponse;
-import com.example.springboot.utils.JwtToken;
+import com.example.springboot.utils.JwtTokenHelper;
 
 @RestController
 @RequestMapping(value = "jwt")
 public class JwtController {
 
 	@Autowired
-	private JwtToken jwtToken;
+	private JwtTokenHelper jwtToken;
 	
 	@PostMapping(value = "createJwt")
 	public JwtResponse create(@RequestBody JwtRequest request) {
