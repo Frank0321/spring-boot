@@ -119,6 +119,9 @@
   - 前端回傳時，通常會帶有前綴字：`bearer `
   - 在解開時，需要從第七個字開始取 jwt.subString(7)
   - https://blog.csdn.net/qq_42411805/article/details/124676309
+- https://ithelp.ithome.com.tw/articles/10256445
+- https://www.1ju.org/article/openapi-jwt-authentication
+
 
 ## session 應用
 - 將資訊儲放 session 中

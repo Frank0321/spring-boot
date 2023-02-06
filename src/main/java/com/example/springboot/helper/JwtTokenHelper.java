@@ -36,7 +36,7 @@ public class JwtTokenHelper implements Serializable {
 	/***
 	 * token 有效時間
 	 */
-	private static final long EXPIRATION_TIME = 1 * 60 * 1000;
+	private static final long EXPIRATION_TIME = 10 * 60 * 1000;
 
 	/***
 	 * 驗證密碼
@@ -84,6 +84,21 @@ public class JwtTokenHelper implements Serializable {
             throw new AuthException("JWT token compact of handler are invalid");
         }
 		
+	}
+	
+	/***
+	 * 解開 token
+	 * @param token
+	 * @return
+	 */
+	public Claims parseToken(String token) {
+				
+		Claims claims = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody();
+		
+		log.info("name : {}", claims.get("name").toString());
+		log.info("pwd : {}", claims.get("pwd").toString());
+		
+		return claims;
 	}
 	
 }

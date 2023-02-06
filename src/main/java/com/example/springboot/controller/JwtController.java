@@ -26,8 +26,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springboot.api.request.JwtRequest;
 import com.example.springboot.api.response.JwtResponse;
-import com.example.springboot.utils.JwtTokenHelper;
+import com.example.springboot.helper.JwtTokenHelper;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @RestController
 @RequestMapping(value = "jwt")
 public class JwtController {
@@ -51,26 +54,6 @@ public class JwtController {
 		
 	}
 	
-	@PostMapping(value = "validateToken")
-	public ResponseEntity<JwtResponse> validate(@RequestBody JwtRequest request) {
-		
-		JwtResponse response = new JwtResponse();
-		
-		try {
-			
-			jwtToken.validateToken(request.getToken());
-			response.setReturnMsg("validate success");
-			return ResponseEntity.status(HttpStatus.OK).body(response);
-			
-		} catch (AuthException e) {
-			
-			response.setReturnMsg("validate fails");
-			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(response);
-			
-		}
-		
-	}
-	
 	/***
 	 * 從 header 中取參數
 	 * @param authorization
@@ -81,11 +64,16 @@ public class JwtController {
 		
 		JwtResponse response = new JwtResponse();
 		
-		String token = authorization.substring(6);
+		// 用 psotman Authorization ，並設定 Bearer 之後，打過來的字串會包含 bearer xxxxxx
+		// 需要先過濾前面七個文字
+		String token = authorization.substring(7);
 	
 		try {
 			
 			jwtToken.validateToken(token);
+			log.info("other way");
+			jwtToken.parseToken(token);
+			
 			response.setReturnMsg("validate success");
 			return ResponseEntity.status(HttpStatus.OK).body(response);
 			
