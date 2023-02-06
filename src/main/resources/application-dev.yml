@@ -5,6 +5,25 @@ server:
 spring:
   banner:
     location: classpath:/banner-dev.txt
+  h2:
+    console:
+      enabled: true
+      path: '/h2-console-log'
+
+  datasource:
+    url: 'jdbc:mysql://localhost:3306/spring'
+    driverClassName: com.mysql.cj.jdbc.Driver    
+    username: spring
+    password: '1qaz@WSX'
+    hikari:
+      minimumIdle: 5
+      maximumPoolSize: 20
+      idleTimeout: 600000
+      maxLifetime: 2000000
+      connectionTimeout: 30000
+  jpa:
+    hibernate:
+      ddl-auto: create
 
 # 控制排成的開關
   scedule:
