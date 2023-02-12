@@ -134,6 +134,7 @@
 - https://waynestalk.com/spring-boot-restful-download-image/
 - https://shinyu0430.github.io/2022/05/06/springUploadImage/
 - https://www.baeldung.com/java-base64-image-string
+- string to img online https://codebeautify.org/base64-to-image-converter
 
 
 ## 建立 h2 db 可用 dbeaver 連線
@@ -192,4 +193,15 @@
 - `maxLifetime` 是池中连接关闭后的最长生命周期（以毫秒为单位)
 - `connectionTimeout` 是客户端等待连接池连接的最大毫秒数
 - https://www.cnblogs.com/chaojizhengui/p/Hikari_.html
-  
+
+
+## JPA
+- GeneratedValue
+  - 默認：全部 table 依序往下累積數量
+  - GenerationType.IDENTITY : 每個 table 從 ` 1 ` 開始 
+  - GenerationType.AUTO : 由 hibernate 自動產生, 此種方法會跨 table 共用
+
+
+## oneToMany
+- https://stackoverflow.com/questions/27672337/detached-entity-passed-to-persist-when-save-the-child-data
+- https://www.geeksforgeeks.org/how-to-implement-one-to-many-mapping-in-spring-boot/
