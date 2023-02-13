@@ -141,6 +141,10 @@
   2. 重新設定 header，並設定下載檔案名稱
   3. 使用 postman 回傳時，雖然為亂碼，但回傳框的左上角，有 save as file ，則可以將檔案進行下載
   4. 比較檔案大小 (待比較)
+- 新增使用 postman 上傳檔案方式
+  - body 切換至 form-data
+  - 針對變數設置 key value
+  - key 後端可以切換為 file，將變數型別為 MultipartFile 選擇為 file，並上傳檔案  
 
 
 ## 建立 h2 db 可用 dbeaver 連線
