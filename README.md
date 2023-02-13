@@ -135,6 +135,12 @@
 - https://shinyu0430.github.io/2022/05/06/springUploadImage/
 - https://www.baeldung.com/java-base64-image-string
 - string to img online https://codebeautify.org/base64-to-image-converter
+- 新增回傳 gz 壓縮欓範例
+  - 參考 sample code
+  1. 使用 GZIPOutputStream 將檔案進行壓縮
+  2. 重新設定 header，並設定下載檔案名稱
+  3. 使用 postman 回傳時，雖然為亂碼，但回傳框的左上角，有 save as file ，則可以將檔案進行下載
+  4. 比較檔案大小 (待比較)
 
 
 ## 建立 h2 db 可用 dbeaver 連線

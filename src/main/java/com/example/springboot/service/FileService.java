@@ -9,9 +9,11 @@
 
 package com.example.springboot.service;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
+import java.util.zip.GZIPOutputStream;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -148,4 +150,28 @@ public class FileService {
 		return returnMsg;
 	}
 
+	/**
+	 * 將圖片轉換成 gz 壓縮欓，進行回傳
+	 * @return
+	 * @throws IOException 
+	 */
+	public byte[] file2gz() throws IOException {
+		
+		File file = new File(filePath + "update.png");
+		byte[] fileContent = FileUtils.readFileToByteArray(file);
+		
+		// 轉換為 gz 壓縮欓
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        GZIPOutputStream gzipOutputStream = new GZIPOutputStream(byteArrayOutputStream);
+        gzipOutputStream.write(fileContent);
+        gzipOutputStream.close();
+        byte[] gzipBytes = byteArrayOutputStream.toByteArray();
+		
+		return gzipBytes;
+	}
+
 }
+
+
+
+

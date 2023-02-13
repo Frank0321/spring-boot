@@ -16,7 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -77,6 +80,25 @@ public class FileController {
 		String filtString = service.file2String();
 		
 		return filtString;
+	}
+	
+	/***
+	 * 將圖片轉換為 .gz 欓進行回傳
+	 * @return
+	 * @throws IOException
+	 */
+	@GetMapping(value = "file2gz")
+	public ResponseEntity<byte[]> file2gz() throws IOException {
+		
+		byte[] gzipBytes = service.file2gz();
+		
+		// 設定 header 與下載檔案名稱
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+        headers.setContentDispositionFormData("attachment", "pictureName.gz");
+        headers.setContentLength(gzipBytes.length);
+        
+		return new ResponseEntity<>(gzipBytes, headers, HttpStatus.OK);
 	}
 	
 	/***
