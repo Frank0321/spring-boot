@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -93,6 +94,74 @@ public class EmployService {
 		
 		EmployResponse response = new EmployResponse();
 		response.setDataModels(list);
+		
+		return response;
+	}
+
+	/**
+	 * 查詢一筆資料
+	 * @param id
+	 * @return
+	 */
+	public EmployResponse findOne(Long id) {
+		
+		EmployResponse response = new EmployResponse();
+		
+		EmployEntity entity = repository.findById(id).orElse(null);
+		
+		if (entity == null) {
+			String string = String.format("參數 %d 查無資料", id);
+			throw new IllegalArgumentException(string);
+		}
+		
+		
+		BeanUtils.copyProperties(entity, response);
+		
+		return response;
+	}
+
+	/**
+	 * 更新一筆資料
+	 * 
+	 * @param id
+	 * @param request 
+	 * @return
+	 */
+	public EmployResponse updateOne(Long id, EmployRequest request) {
+		
+		EmployResponse response = new EmployResponse();
+		
+		EmployEntity employEntity = repository.findById(id).orElse(null);
+		
+		if (employEntity == null) {
+			response.setRtnMsg("此 id 找無資料");
+			return response;
+		}
+		
+		employEntity.setEmpNo(request.getEmpNo());
+		employEntity.setName(request.getName());
+		employEntity.setMail(request.getMail());
+		employEntity.setPhone(request.getPhone());
+		repository.save(employEntity);
+		
+		response.setRtnMsg("資料已更新");
+		
+		return response;
+		
+	}
+
+	/**
+	 * 刪除一筆資料
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public EmployResponse deleteOne(Long id) {
+		
+		EmployResponse response = new EmployResponse();
+		
+		repository.deleteById(id);
+		response.setRtnMsg("已刪除一筆資料");
 		
 		return response;
 	}

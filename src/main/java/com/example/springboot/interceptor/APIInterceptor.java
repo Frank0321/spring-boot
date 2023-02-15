@@ -28,8 +28,9 @@ public class APIInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		
 	
-		log.info("start preHandle , req : {}", request.toString());
+		log.info("before controller ");
 		return true;
 	}
 	
@@ -41,8 +42,7 @@ public class APIInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		
-		log.info("start postHandle, res : {}", response);
-		HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
+		log.info("after controller ");
 	}
 
 	

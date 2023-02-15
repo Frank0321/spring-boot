@@ -19,8 +19,11 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -28,6 +31,9 @@ import com.example.springboot.api.request.EmployRequest;
 import com.example.springboot.api.response.EmployResponse;
 import com.example.springboot.service.EmployService;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @Controller
 @RequestMapping(value = "employ")
 public class EmployController {
@@ -51,9 +57,6 @@ public class EmployController {
 		Frank.setMail("email@email");
 		employList.add(Frank);
 		
-//		EmployRequest Jack = new EmployRequest();
-//		employList.add(Jack);	
-		
 		service.saveAll(employList);
 	}
 	
@@ -66,6 +69,8 @@ public class EmployController {
 		
 		EmployResponse response = service.findAll();
 		
+		log.info("finish");
+		
 		return ResponseEntity.ok(response);
 	}
 	
@@ -73,7 +78,14 @@ public class EmployController {
 	/**
 	 * 查詢特定員編的員工資料 (get)
 	 */
-	
+	@GetMapping(value = "{id}")
+	public ResponseEntity<EmployResponse> findOne(@PathVariable("id")Long id){
+		
+		EmployResponse response = new EmployResponse();
+		response = service.findOne(id);
+		return ResponseEntity.ok(response);
+		
+	}
 
 	/**
 	 * 新增一筆員工資料 (post)
@@ -89,9 +101,25 @@ public class EmployController {
 	/**
 	 * 更新一筆員工資料 (put)
 	 */
-	
+	@PutMapping(value = "{id}")
+	public ResponseEntity<EmployResponse> updateOne(@PathVariable("id")Long id, @RequestBody EmployRequest request){
+		
+		EmployResponse response = new EmployResponse();
+		response = service.updateOne(id, request);
+		return ResponseEntity.ok(response);
+		
+	}
 	
 	/**
 	 * 刪除一筆員工資料 (delete)
 	 */
+	@DeleteMapping(value = "{id}")
+	public ResponseEntity<EmployResponse> deleteOne(@PathVariable("id")Long id){
+		
+		EmployResponse response = new EmployResponse();
+		response = service.deleteOne(id);
+		return ResponseEntity.ok(response);
+	}
+	
+	
 }

@@ -11,6 +11,7 @@
 package com.example.springboot.api.response;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -27,8 +28,23 @@ public class EmployResponse implements Serializable {
 	/** id */
 	private String id;
 
-	/** 名稱 */
+	/** 員工編號 */
+	private String empNo;
+	
+	/** 員工姓名 */
 	private String name;
+	
+	/** 到職日期 */
+	private Date createDate;
+	
+	/** 連絡電話 */
+	private String phone;
+	
+	/** email */
+	private String mail;
+	
+	/** 回應訊息 */
+	private String rtnMsg;
 	
 	/** dataModel */
 	private List<DataModel> dataModels;
