@@ -17,6 +17,10 @@ spring:
       maxLifetime: 2000000
       connectionTimeout: 30000
 
+# 控制排成的開關
+  scedule:
+    enable: Y
+
 management:
   endpoints:
     web:
@@ -44,3 +48,4 @@ user:
 springdoc:
   swagger-ui:
     path: /swagger    
+    

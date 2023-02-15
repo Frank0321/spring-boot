@@ -70,6 +70,15 @@
     - management.endpoints.web.exposure.include=beans,mappings
  - 輸入 ./actuator/beans
  - https://kucw.github.io/blog/2020/7/spring-actuator/
+ - 在 log 輸出部分，有紀錄
+   ```
+   Exposing 13 endpoint(s) beneath base path '/actuator'
+   ```
+- 在 /actuator 裏面，常見的功能有：
+  - beans：查詢全部被註冊 bean 的名稱
+  - envs：查詢全部的環境變數 (包含自定義)
+  - mappings：查看全部的 endpoint
+  - scheduledtasks：	查看目前排程狀態
  
  
 ## AnnotationBeanNameGenerator (註冊 spring bean 名稱)
@@ -81,6 +90,8 @@
 ## 讀取 application.yml 檔內容
 - https://www.baeldung.com/spring-boot-yaml-list
 - https://www.baeldung.com/spring-value-annotation
+- 預設參數清單 https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html
+- yaml 轉換成 properties https://mageddo.com/tools/yaml-converter
 
 
 ## 啟動時，自動執行 sql 
