@@ -7,7 +7,7 @@
  *   1) First Release.
  */
 
-package com.example.springboot.service;
+package com.example.springboot.bean;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
