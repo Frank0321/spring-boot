@@ -19,7 +19,7 @@ spring:
 
 # 控制排成的開關
   scedule:
-    enable: Y
+    enable: N
 
 management:
   endpoints:

@@ -226,3 +226,26 @@
 ## oneToMany
 - https://stackoverflow.com/questions/27672337/detached-entity-passed-to-persist-when-save-the-child-data
 - https://www.geeksforgeeks.org/how-to-implement-one-to-many-mapping-in-spring-boot/
+
+
+## Bean Type
+- singleton (default)
+  - 預設的bean scope，整個IoC容器中只會有一個實例，又稱單例
+- prototype
+  - 每次被調用（注入）時都是產生新的實例。
+  - 若bean有狀態(stateful)，使用 prototype bean。
+  - 注意若注入的對象為 singleton bean 的成員，則該 prototype 僅在 singleton 對象初始時實例化一次，也就是說每次 singleton bean 被調用時使用的 prototype bean 都是同一個。
+- request
+  - Web 環境才有的 scope。
+  - 實例的 scope 為 HTTP Request，同個 request 的實例為同一個，也就是不同 request 的實例是不同的
+- session
+  - Web 環境才有的 scope。
+  - 實例的 scope 為 HTTP Session，同個 sessio n的實例為同一個，也就是不同 session 的實例是不同的。
+- application
+  - Web 環境才有的 scope。
+  - 實例的 scope 為 ServletContext，同個 ServletContext 的實例為同一個，也就是不同 ServletContext 的實例是不同的。
+- websocket
+  - Web 環境才有的 scope。
+  - 實例的 scope 為 WebSocket，同個 WebSocket 的實例為同一個，也就是不同 WebSocket 的實例是不同的。
+- [參考](https://matthung0807.blogspot.com/2020/06/spring-bean-bean-scope.html)
+- [sample code](https://www.baeldung.com/spring-bean-scopes)
