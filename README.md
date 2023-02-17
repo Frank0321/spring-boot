@@ -204,7 +204,11 @@
 - spring.jpa.hibernate.ddl-auto
   - create: 啟動時建立Table, 下次啟動會覆蓋上次的, 故會造成資料遺失  
   - update: 若無Table則啟動時建立, 若有則視有無變更自動Update
-  - create-drop: 啟動時建立Table, 當次Session關閉則刪除
+  - create-drop: 啟動時建立Table, 當次Session關閉則刪除  (hsqldb, h2 的 default)
+  - validate: 只驗證，不修改表格
+  - none: 蛤也不做 (大部分的 default)
+- https://fookwood.com/hibernate-generate-ddl
+- https://www.eolink.com/news/post/14975.html
   
 
 ## HikariCP 設定
@@ -221,6 +225,8 @@
   - 默認：全部 table 依序往下累積數量
   - GenerationType.IDENTITY : 每個 table 從 ` 1 ` 開始 
   - GenerationType.AUTO : 由 hibernate 自動產生, 此種方法會跨 table 共用
+- jndi 與 jdbc 差異：https://cloud.tencent.com/developer/article/1455718
+  
 
 
 ## oneToMany
