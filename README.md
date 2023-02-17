@@ -226,7 +226,18 @@
   - GenerationType.IDENTITY : 每個 table 從 ` 1 ` 開始 
   - GenerationType.AUTO : 由 hibernate 自動產生, 此種方法會跨 table 共用
 - jndi 與 jdbc 差異：https://cloud.tencent.com/developer/article/1455718
-  
+- jpa 依據使用的設定，決定使用哪種連線方式
+  - jndi: 需要再把連線資訊寫在容器中
+    ```
+    spring.datasource.jndi-name=java:comp/env/jdbc/mydatabase
+    ```
+  - jdbc: 帳號密碼寫在設定檔中
+    ```
+    spring.datasource.url=jdbc:mysql://localhost:3306/mydatabase
+	spring.datasource.username=myuser
+	spring.datasource.password=mypassword
+	spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+    ```   
 
 
 ## oneToMany
