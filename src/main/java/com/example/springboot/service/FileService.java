@@ -48,7 +48,7 @@ public class FileService {
 		String returnMsg = "";
 		
 		try {
-			// 新增時間戳在檔名上，表示唯一檔案
+			// 考慮新增時間戳在檔名上，表示唯一檔案
 			File file = new File(filePath + fileName + ".png");
 			
 			if (!file.getParentFile().exists()) {
