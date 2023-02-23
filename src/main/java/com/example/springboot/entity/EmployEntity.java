@@ -16,9 +16,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 @Data
 @Entity
+@Accessors(chain = true)
 public class EmployEntity {
 	
 	@Id

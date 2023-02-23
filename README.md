@@ -238,11 +238,21 @@
 	spring.datasource.password=mypassword
 	spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
     ```   
-
-
-## oneToMany
+- @Repository: 如果在 SpringBootApplication 標註 `@EnableJpaRepositories("com.***.dao")` ，則可以不需要 @Repository
+- https://stackoverflow.com/questions/69909613/why-spring-data-jpa-unnecessary-repository
+- oneToMany
 - https://stackoverflow.com/questions/27672337/detached-entity-passed-to-persist-when-save-the-child-data
 - https://www.geeksforgeeks.org/how-to-implement-one-to-many-mapping-in-spring-boot/
+- @Entity
+  - @PrePersist: 在儲存 Entity 之前呼叫，如儲存前塞入資料建立時間
+  	```
+  	@PrePersist
+	void onCreate() {
+		this.setLogDttm(new Timestamp((new Date()).getTime()));
+	}
+  	```
+  - [參考](https://openhome.cc/Gossip/EJB3Gossip/EntityLifeCycleListener.html)  
+- https://blog.csdn.net/qq_41378597/article/details/103798684
 
 
 ## Bean Type
@@ -266,3 +276,28 @@
   - 實例的 scope 為 WebSocket，同個 WebSocket 的實例為同一個，也就是不同 WebSocket 的實例是不同的。
 - [參考](https://matthung0807.blogspot.com/2020/06/spring-bean-bean-scope.html)
 - [sample code](https://www.baeldung.com/spring-bean-scopes)
+
+
+## Lombok
+- @Accessors
+  - chain = true:
+    - 原本 setter 的方法回傳 void，但標註 @Accessors(chain = true) 後，回傳為該物件本身
+      ```
+      @Data
+	  @Accessors(chain = true)
+      public class EmployEntity {
+      
+      	private Intger id;
+      }
+      
+      ```
+      原本 setter id 的 method 為
+      ```
+      public void setId(Integer id){
+      }
+      ```
+      被改寫為 
+      ```
+      public EmployEntity setId(Integer id){
+      }
+      ```
