@@ -9,6 +9,8 @@
 
 package com.example.springboot.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,5 +18,11 @@ import com.example.springboot.entity.EmployEntity;
 
 @Repository
 public interface EmployRepository extends JpaRepository<EmployEntity, Long>{
+
+	/**
+	 * @param empNo
+	 * @return
+	 */
+	Optional<EmployEntity> findByEmpNo(String empNo);
 
 }

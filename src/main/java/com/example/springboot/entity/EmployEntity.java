@@ -42,5 +42,8 @@ public class EmployEntity {
 	
 	/** email */
 	private String mail;
-	
+
+	/** 工時 */
+	private Integer hourlyWage;
+
 }

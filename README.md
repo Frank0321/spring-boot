@@ -301,3 +301,13 @@
       public EmployEntity setId(Integer id){
       }
       ```
+      
+
+## Unit test
+- spring boot <= 2.1 
+  - 僅使用 Junit4，使用 @RunWith
+- spring boot 2.2,  2.3
+  - 能使用 Junit4，使用 @RunWith
+  - 能使用 Junit5，使用 @ExtendWith
+- spring boot >= 2.4
+  - 僅使用 Junit5，使用 @ExtendWith

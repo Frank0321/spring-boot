@@ -11,6 +11,7 @@
 
 package com.example.springboot.service;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,14 +24,19 @@ import com.example.springboot.api.request.EmployRequest;
 import com.example.springboot.api.response.EmployResponse;
 import com.example.springboot.api.response.EmployResponse.DataModel;
 import com.example.springboot.entity.EmployEntity;
+import com.example.springboot.entity.EmployWorkTimeEntity;
 import com.example.springboot.repository.EmployRepository;
+import com.example.springboot.repository.EmployWorkTimeRepository;
 
 @Service
 public class EmployService {
 	
 	@Autowired
-	private EmployRepository repository;
+	private EmployRepository employRepository;
 
+	@Autowired
+	private EmployWorkTimeRepository employWorkTimeRepository;
+	
 	/**
 	 * 新增多筆資料
 	 * 
@@ -50,7 +56,7 @@ public class EmployService {
 			employEntities.add(entity);
 		}
 		
-		repository.saveAll(employEntities);
+		employRepository.saveAll(employEntities);
 	}
 
 	/**
@@ -67,7 +73,7 @@ public class EmployService {
 		entity.setCreateDate(new Date());
 		entity.setPhone(request.getPhone());
 		entity.setMail(request.getMail());
-		repository.save(entity);
+		employRepository.save(entity);
 		
 		return "success";
 	}
@@ -79,7 +85,7 @@ public class EmployService {
 	 */
 	public EmployResponse findAll() {
 		
-		List<EmployEntity> entities = repository.findAll();
+		List<EmployEntity> entities = employRepository.findAll();
 		
 		List<DataModel> list = new ArrayList<DataModel>();
 		for (EmployEntity entity : entities) {
@@ -107,7 +113,7 @@ public class EmployService {
 		
 		EmployResponse response = new EmployResponse();
 		
-		EmployEntity entity = repository.findById(id).orElse(null);
+		EmployEntity entity = employRepository.findById(id).orElse(null);
 		
 		if (entity == null) {
 			String string = String.format("參數 %d 查無資料", id);
@@ -131,7 +137,7 @@ public class EmployService {
 		
 		EmployResponse response = new EmployResponse();
 		
-		EmployEntity employEntity = repository.findById(id).orElse(null);
+		EmployEntity employEntity = employRepository.findById(id).orElse(null);
 		
 		if (employEntity == null) {
 			response.setRtnMsg("此 id 找無資料");
@@ -142,7 +148,7 @@ public class EmployService {
 		employEntity.setName(request.getName());
 		employEntity.setMail(request.getMail());
 		employEntity.setPhone(request.getPhone());
-		repository.save(employEntity);
+		employRepository.save(employEntity);
 		
 		response.setRtnMsg("資料已更新");
 		
@@ -160,11 +166,41 @@ public class EmployService {
 		
 		EmployResponse response = new EmployResponse();
 		
-		repository.deleteById(id);
+		employRepository.deleteById(id);
 		response.setRtnMsg("已刪除一筆資料");
 		
 		return response;
 	}
 	
+	/***
+	 * 計算特定員工的工時
+	 * @param empNo
+	 * @return
+	 */
+	public int employMoney(String empNo) {
+		
+		int money = 0;
+		
+		// 尋找員工資料
+		EmployEntity employEntity = employRepository.findByEmpNo(empNo).orElse(null);		
+		
+		if (employEntity == null) {
+			return money;
+		}
+		
+		int hour = 0;
+		
+		// 找尋該員工工時資料
+		List<EmployWorkTimeEntity> employWorkTimeEntities = employWorkTimeRepository.findByEmpId(employEntity.getId());
+		for (EmployWorkTimeEntity employWorkTimeEntity : employWorkTimeEntities) {
+			Duration duration = Duration.between(employWorkTimeEntity.getStartTime(), employWorkTimeEntity.getEndTime());
+			hour += duration.toHours();
+		}
+		
+		// 計算薪資
+		money = employEntity.getHourlyWage() * hour;
+		
+		return money;
+	}
 
 }
