@@ -221,7 +221,7 @@
 
 
 ## JPA
-- GeneratedValue
+- GeneratedValue (strategy 的參數)
   - 默認：全部 table 依序往下累積數量
   - GenerationType.IDENTITY : 每個 table 從 ` 1 ` 開始 
   - GenerationType.AUTO : 由 hibernate 自動產生, 此種方法會跨 table 共用
@@ -311,3 +311,10 @@
   - 能使用 Junit5，使用 @ExtendWith
 - spring boot >= 2.4
   - 僅使用 Junit5，使用 @ExtendWith
+- https://www.shouxicto.com/article/232.html
+
+  
+## 加減密
+- https://dotblogs.com.tw/chhuang/2011/01/19/20883  
+- https://blog.csdn.net/u010142437/article/details/17767809
+- https://juejin.cn/post/7022798228492042276
