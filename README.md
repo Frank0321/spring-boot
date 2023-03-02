@@ -315,7 +315,23 @@
 - https://vivifish.medium.com/java-%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6%E5%B7%A5%E5%85%B7-mockito-e5f0ce93579d
 - 覆蓋率：右鍵點選 Coverage As 或是 工具列的 Launch Employ ServiceTest
 - https://dotblogs.com.tw/eric3724135/2013/12/11/133482
-
+- mvn test report
+  - 在 pom.xml 新增
+    ```
+    <reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>3.0.0-M9</version>
+			</plugin>
+		</plugins>
+	</reporting>
+    ```
+  - 執行 `surefire-report:report`
+  - A HTML report should be generated in `${basedir}/target/site/surefire-report.html`
+  - https://maven.apache.org/surefire/maven-surefire-report-plugin/usage.html
+  
   
 ## 加減密
 - https://dotblogs.com.tw/chhuang/2011/01/19/20883  

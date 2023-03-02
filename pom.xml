@@ -128,19 +128,32 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			
+			<!-- dependency check -->
 			<plugin>
-              <groupId>org.owasp</groupId>
-              <artifactId>dependency-check-maven</artifactId>
-              <version>8.1.1</version>
-              <executions>
-                  <execution>
-                      <goals>
-                          <goal>check</goal>
-                      </goals>
-                  </execution>
-              </executions>
-            </plugin>
+				<groupId>org.owasp</groupId>
+				<artifactId>dependency-check-maven</artifactId>
+				<version>8.1.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
+	
+	<!-- mvn test report -->
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>3.0.0-M9</version>
+			</plugin>
+		</plugins>
+	</reporting>
 
 </project>
