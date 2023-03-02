@@ -312,6 +312,9 @@
 - spring boot >= 2.4
   - 僅使用 Junit5，使用 @ExtendWith
 - https://www.shouxicto.com/article/232.html
+- https://vivifish.medium.com/java-%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6%E5%B7%A5%E5%85%B7-mockito-e5f0ce93579d
+- 覆蓋率：右鍵點選 Coverage As 或是 工具列的 Launch Employ ServiceTest
+- https://dotblogs.com.tw/eric3724135/2013/12/11/133482
 
   
 ## 加減密
