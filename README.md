@@ -321,3 +321,26 @@
 - https://dotblogs.com.tw/chhuang/2011/01/19/20883  
 - https://blog.csdn.net/u010142437/article/details/17767809
 - https://juejin.cn/post/7022798228492042276
+
+
+## dependency check
+- 在 pom.xml 新增 plugin 內容如下：
+  ```
+	<plugin>
+	  <groupId>org.owasp</groupId>
+	  <artifactId>dependency-check-maven</artifactId>
+	  <version>8.1.1</version>
+	  <executions>
+	      <execution>
+	          <goals>
+	              <goal>check</goal>
+	          </goals>
+	      </execution>
+	  </executions>
+	</plugin>
+  ```
+- 執行 `mvn org.owasp:dependency-check-maven:check`
+- 在 target 會產生 dependency-check-report.html 的檔案
+- summary 會顯示有問題的 dependency
+  - 提高 dependency 的版號
+  - 確認使用新的 dependency 版本後，可以繼續執行專案
