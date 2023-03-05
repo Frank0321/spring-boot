@@ -9,6 +9,8 @@
 
 package com.example.springboot.controller;
 
+import java.nio.charset.Charset;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +31,7 @@ public class SimpleController {
 	public ResponseEntity<String> doGetRes(){
 		
 		log.info("執行 controller");
+		log.info("目前系統預設語系: {}", Charset.defaultCharset());
 		
 		return ResponseEntity.ok("帥氣的法蘭克");
 	}
