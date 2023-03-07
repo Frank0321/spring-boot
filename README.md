@@ -331,6 +331,16 @@
   - 執行 `surefire-report:report`
   - A HTML report should be generated in `${basedir}/target/site/surefire-report.html`
   - https://maven.apache.org/surefire/maven-surefire-report-plugin/usage.html
+- Mock & spy
+  - Mock 全部都是假的，都要假設回傳值
+  - spy 可以為真的，也可以假設回傳值
+    ```
+    spy 對象實際上是一個代理對象，它包裝了一個真實的對象，同時提供了一些用於對其行為進行修改和檢查的方法。
+    spy 對象通過動態代理技術實現，即當您調用 spy 對象的方法時，它會自動調用原始對象的方法，然後將其包裝在 spy 對象的方法中。
+    在設置 spy 對象的行為時，它將覆蓋原始對象的行為，從而實現對對象行為的修改和檢查。
+    ```
+  - https://matthung0807.blogspot.com/2018/08/mockito-mockspy.html
+  - https://javapointers.com/java/unit-test/difference-between-spy-and-mock-in-mockito/
   
   
 ## 加減密
