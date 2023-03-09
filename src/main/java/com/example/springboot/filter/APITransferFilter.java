@@ -17,6 +17,14 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.example.springboot.wrapper.WrapperHttpServletRequest;
+import com.example.springboot.wrapper.WrapperHttpServletResponse;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -30,7 +38,20 @@ public class APITransferFilter implements Filter{
 		
 		log.info("before filter");
 		
-		chain.doFilter(request, response);
+		WrapperHttpServletRequest reqWrapper = new WrapperHttpServletRequest((HttpServletRequest) request);
+		WrapperHttpServletResponse resWrapper = new WrapperHttpServletResponse((HttpServletResponse) response);
+		
+		chain.doFilter(reqWrapper, resWrapper);
+		
+		// 改寫 response
+		ObjectMapper mapper = new ObjectMapper();
+		byte[] responseData = resWrapper.getResponseData();
+		JsonNode resContent = mapper.readTree(new String(responseData, "UTF8"));
+		
+		ObjectNode node = mapper.createObjectNode();
+		node.putPOJO("resHeader", "header");
+		node.putPOJO("resBody", resContent);
+		response.getWriter().write(mapper.writeValueAsString(node));
 		
 		log.info("after filter");
 		

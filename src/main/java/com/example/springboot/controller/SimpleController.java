@@ -16,6 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.springboot.api.response.SimpleResponse;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.log4j.Log4j2;
@@ -28,11 +30,15 @@ public class SimpleController {
 
 	@Operation(summary = "間單的 api")
 	@GetMapping(value = "/get")
-	public ResponseEntity<String> doGetRes(){
+	public ResponseEntity<SimpleResponse> doGetRes(){
+		
+		SimpleResponse response = new SimpleResponse();
 		
 		log.info("執行 controller");
 		log.info("目前系統預設語系: {}", Charset.defaultCharset());
 		
-		return ResponseEntity.ok("帥氣的法蘭克");
+		response.setReturnMsg("帥氣的法蘭克");
+		
+		return ResponseEntity.ok(response);
 	}
 }

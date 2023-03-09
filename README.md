@@ -370,3 +370,9 @@
 - summary 會顯示有問題的 dependency
   - 提高 dependency 的版號
   - 確認使用新的 dependency 版本後，可以繼續執行專案
+
+  
+  
+## 改寫 res
+- TODO待補充 (參考凱基)
+- https://groups.google.com/g/jackson-user/c/iBqtXpxn7Ds  
