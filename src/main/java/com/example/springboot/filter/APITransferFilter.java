@@ -40,6 +40,7 @@ public class APITransferFilter implements Filter{
 		
 		WrapperHttpServletRequest reqWrapper = new WrapperHttpServletRequest((HttpServletRequest) request);
 		WrapperHttpServletResponse resWrapper = new WrapperHttpServletResponse((HttpServletResponse) response);
+		resWrapper.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Origin");
 		
 		chain.doFilter(reqWrapper, resWrapper);
 		
