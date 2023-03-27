@@ -198,7 +198,9 @@
   - method 標註 @Operation 
 - 攔截器會影響到 swagger 需要額外設定 application.yml
 - https://stackoverflow.com/questions/67162911/petstore-url-swagger-default-app-not-disabled-in-springdoc  
-  
+- swagger 只能適用於 REST API 上
+  - 需要為 ＠RestController 或是 @Controller + @ResponseBody 才會被註冊到 swagger 裏面
+   
   
 ## db table 設定
 - spring.jpa.hibernate.ddl-auto
@@ -371,8 +373,7 @@
   - 提高 dependency 的版號
   - 確認使用新的 dependency 版本後，可以繼續執行專案
 
-  
-  
+   
 ## 改寫 res
 - TODO待補充 (參考凱基)
 - https://groups.google.com/g/jackson-user/c/iBqtXpxn7Ds  
