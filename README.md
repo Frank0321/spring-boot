@@ -19,6 +19,17 @@
 - https://polinwei.com/spring-boot-scheduling-tasks/
 
 
+## 動態排程
+- 參考 SchedulingConfige 範例
+- 每次執行皆自動延遲時間加 1 秒
+- PeriodicTrigger fixedRate
+  - Specify whether the periodic interval should be measured between the
+    scheduled start times rather than between actual completion times.
+  - TODO fixedRate true false 的差異
+- TODO cron 的格式，應該與原先設定一致
+- https://chikuwa-tech-study.blogspot.com/2023/03/spring-boot-scheduled-task-incl-dymanically.html
+
+
 ## filter 
 - 使用 @Configuration、＠Component
   - 預設為全部 api 皆會通過此 filter
