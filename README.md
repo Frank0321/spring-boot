@@ -388,3 +388,9 @@
 ## 改寫 res
 - TODO待補充 (參考凱基)
 - https://groups.google.com/g/jackson-user/c/iBqtXpxn7Ds  
+
+
+## xml
+- 簡單範例
+- 將資料塞入 xml 中，並印出 xml 格式
+- https://www.796t.com/p/1330963.html
