@@ -202,5 +202,30 @@ public class EmployService {
 		
 		return money;
 	}
+	
+	/***
+	 * 找尋多筆資料
+	 * @return
+	 */
+	public EmployResponse findList(List<String> list){
+		
+		EmployResponse response = new EmployResponse();
+		
+		List<EmployEntity> entities = employRepository.findList(list);
+		
+		List<DataModel> dataModels = new ArrayList<DataModel>();
+		for (EmployEntity entity : entities) {
+			DataModel dataModel = new DataModel();
+			dataModel.setEmpNo(entity.getEmpNo());
+			dataModel.setName(entity.getName());
+			dataModel.setPhone(entity.getPhone());
+			dataModel.setMail(entity.getMail());
+			dataModels.add(dataModel);
+		}
+		
+		response.setDataModels(dataModels);
+		
+		return response;
+	}
 
 }

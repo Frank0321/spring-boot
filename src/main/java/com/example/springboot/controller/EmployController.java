@@ -57,6 +57,14 @@ public class EmployController {
 		Frank.setMail("email@email");
 		employList.add(Frank);
 		
+		EmployRequest Jackie = new EmployRequest();
+		Jackie.setEmpNo("2203475");
+		Jackie.setName("Jokie");
+		Jackie.setCreateDate(null);   //待設定特定時間
+		Jackie.setPhone("0912456378");
+		Jackie.setMail("email@email");
+		employList.add(Jackie);
+		
 		service.saveAll(employList);
 	}
 	
@@ -121,5 +129,16 @@ public class EmployController {
 		return ResponseEntity.ok(response);
 	}
 	
+	@GetMapping(value = "list")
+	public ResponseEntity<EmployResponse> findList(){
+		
+		List<String> list = new ArrayList<String>();
+		list.add("2202475");
+		list.add("2203475");
+	
+		EmployResponse response = service.findList(list);
+		return ResponseEntity.ok(response);
+		
+	}
 	
 }
