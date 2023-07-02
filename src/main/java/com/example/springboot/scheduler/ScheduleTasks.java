@@ -30,5 +30,10 @@ public class ScheduleTasks {
 	public void showFixedDelay() {
 		log.info("show fixedDelay, time :{}", DATE_FORMAT.format(new Date()));
 	}
+	
+	@Scheduled(cron = "0/30 * * * * *")
+	public void showCronTime() {
+		log.info("show cron time :{}", DATE_FORMAT.format(new Date()));
+	}
 
 }
