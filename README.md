@@ -427,3 +427,30 @@
 - 簡單範例
 - 將資料塞入 xml 中，並印出 xml 格式
 - https://www.796t.com/p/1330963.html
+
+
+## 打包時，額外包使用到的 jar 檔
+- jar 與 war 差異：jar只會將程式打包，不會額外包入使用到的 jar 檔
+- 在 pom.xml <build></build> 裏面新增 plugin
+  ```
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-dependency-plugin</artifactId>
+		<executions>
+			<execution>
+				<id>copy-dependencies</id>
+				<phase>package</phase>
+				<goals>
+					<goal>copy-dependencies</goal>
+				</goals>
+				<configuration>
+					<outputDirectory>${project.build.directory}/lib</outputDirectory>
+					<overWriteReleases>false</overWriteReleases>
+					<overWriteSnapshots>false</overWriteSnapshots>
+					<overWriteIfNewer>true</overWriteIfNewer>
+				</configuration>
+			</execution>
+		</executions>
+	</plugin>
+  ```
+- 執行 maven package 的時候，會在 target 產生 lib(在 plugin 有描述) folder，擺放全部使用到的 jar
