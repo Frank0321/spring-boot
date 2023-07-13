@@ -454,3 +454,23 @@
 	</plugin>
   ```
 - 執行 maven package 的時候，會在 target 產生 lib(在 plugin 有描述) folder，擺放全部使用到的 jar
+
+
+## Log 設定
+- 輸出樣式
+  - 在 log4j2 的 LOG_PATTERN 進行設定
+  
+- 新增輸出站位符號
+  - 使用 org.apache.logging.log4j.ThreadContext 新增站位符號
+	```
+	/**
+	 * 新增 log 欄位
+	 */
+	private void addUuidFields(String uuid) {
+		
+		ThreadContext.put("uuid", uuid);
+		
+	}
+	```
+  - 在 LOG_PATTERN 則可以使用這一個站位符號
+  - https://www.kancloud.cn/apachecn/howtodoinjava-zh/1953027

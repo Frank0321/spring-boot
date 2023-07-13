@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="debug" monitorInterval="30">
+
+	<!-- 共用參數定義 -->
+	<Properties>
+	 	<Property name="LOG_PATTERN">%d{yy-MM-dd HH:mm:ss.SSS} %p %pid --- [%t] %-40.40logger{39} : %m%n%ex</Property> 
+        <Property name="APP_LOG_ROOT">/Users/frankchang/private/project/spring-boot/src/main/resources/log</Property>
+        <Property name="LOG_FILE">server</Property>
+	</Properties>
+
+	<Appenders>
+	
+		<!-- console log -->
+		<Console name="console-log">
+			<PatternLayout pattern="${LOG_PATTERN}"/>
+		</Console>
+		
+		<!-- output file -->
+		<RollingFile name="adm-log" 
+					 fileName="${APP_LOG_ROOT}/${LOG_FILE}.log" 
+					 filePattern="${APP_LOG_ROOT}/${LOG_FILE}-%d{yyyy-MM-dd}.log.gz">
+					 
+			<PatternLayout pattern="${LOG_PATTERN}"/>
+			<Policies>
+				<TimeBasedTriggeringPolicy modulate="true"/>
+			</Policies>
+			<DefaultRolloverStrategy max="30"/>	
+		</RollingFile>
+
+	</Appenders>
+	
+	<Loggers>
+		<Logger name="com.hitrust.fedi.adm.fediadm" additivity="false">
+			<AppenderRef ref="adm-log"/>
+			<AppenderRef ref="console-log"/>			
+		</Logger>
+	
+		<!-- setting hibernate SQL -->
+		<Logger name="org.hibernate.SQL" level="debug">
+			<AppenderRef ref="adm-log"/>
+			<AppenderRef ref="console-log"/>
+		</Logger>
+		
+		<Root level="info">
+			<AppenderRef ref="adm-log"/>
+			<AppenderRef ref="console-log"/>
+		</Root>
+	</Loggers>
+
+</Configuration>
