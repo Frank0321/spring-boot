@@ -474,3 +474,45 @@
 	```
   - 在 LOG_PATTERN 則可以使用這一個站位符號
   - https://www.kancloud.cn/apachecn/howtodoinjava-zh/1953027
+  
+  
+## 發送 API RestTemplate 
+- 發送方式
+  - 設定 header
+  - 設定 request
+  - 設定 response
+  ```
+  // 設定 header
+  HttpHeaders headers =  new HttpHeaders();
+  headers.setContentType(MediaType.APPLICATION_JSON);
+  
+  // 設定 request
+  E2eeRequest e2eeRequest = new E2eeRequest();
+  
+  // 組合為請求
+  HttpEntity<E2eeRequest> requestEntity = new HttpEntity<E2eeRequest>(e2eeRequest, headers);
+  
+  // 發送請求
+  RestTemplate restTemplate = new RestTemplate();
+  E2eeResponse e2eeResponse = restTemplate.postForObject(e2eUrl, requestEntity,  E2eeResponse.class);
+  ```
+
+- 設定 timeout
+	
+	```
+	SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
+	factory.setConnectTimeout(1000);
+	factory.setReadTimeout(1000);
+	
+	//...
+	restTemplate.setRequestFactory(factory);
+	
+	```
+  - 超過 timeout 時間時，就會拋出 exception	
+  - 預設沒有 timeout 時間上線
+
+- https://stackoverflow.com/questions/11537591/resttemplate-default-timeout-value
+- https://www.gushiciku.cn/pl/20Ak/zh-tw
+
+## (排程) Job 
+  
