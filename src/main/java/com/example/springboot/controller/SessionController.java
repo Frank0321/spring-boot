@@ -92,4 +92,36 @@ public class SessionController {
 		response.setReturnMsg("session logOut! session is clean");
 		return response;
 	}
+	
+	/***
+	 * 儲存在 session 中
+	 * @return
+	 */
+	@GetMapping(value = "saveSession")
+	public SessionResponse saveSession() {
+		
+		SessionResponse response = new SessionResponse();
+		
+		HttpSession session = this.helper.getSession();
+		session.setAttribute("default", "default");
+		
+		return response;
+	}
+	
+	/***
+	 * 儲存在 session 中
+	 * @return
+	 */
+	@GetMapping(value = "getSession")
+	public SessionResponse getSession() {
+		
+		SessionResponse response = new SessionResponse();
+		
+		HttpSession session = this.helper.getSession();
+		String sessionString = (String) session.getAttribute("default");
+		response.setReturnMsg(sessionString);
+		
+		return response;
+	}
+	
 }
