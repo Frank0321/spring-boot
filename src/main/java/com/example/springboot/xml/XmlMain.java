@@ -9,6 +9,8 @@
 
 package com.example.springboot.xml;
 
+import java.io.StringWriter;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -29,9 +31,20 @@ public class XmlMain {
 		
 		try {
 			
+			// sol(1)
+//			JAXBContext context = JAXBContext.newInstance(XmlBean.class);
+//			Marshaller marshaller = context.createMarshaller();
+//			marshaller.marshal(xmlBean, System.out);
+			
+			// sol(2)
 			JAXBContext context = JAXBContext.newInstance(XmlBean.class);
 			Marshaller marshaller = context.createMarshaller();
-			marshaller.marshal(xmlBean, System.out);
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			StringWriter writer = new StringWriter();
+			marshaller.marshal(xmlBean, writer);
+			String xmlString = writer.toString();
+			
+			System.out.println(xmlString);
 			
 			
 		} catch (JAXBException e) {
