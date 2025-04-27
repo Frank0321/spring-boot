@@ -7,7 +7,7 @@
  *   1) First Release.
  */
 
-package com.example.springboot.xml;
+package com.example.springboot.xml.simple;
 
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlObject;
